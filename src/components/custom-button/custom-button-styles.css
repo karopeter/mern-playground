@@ -1,0 +1,20 @@
+.custom-button{
+  width: auto;
+  min-width: 165px;
+  height: 40px;
+  padding: 8px;
+  font-size: 18px;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: 400;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: blue;
+    color: #fff;
+}
