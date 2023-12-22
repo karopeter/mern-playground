@@ -1,18 +1,14 @@
-.web-page {
+.login-webpage {
   display: grid;
-  height: 100vh;
   grid-template-columns: 1fr 1fr;
+  height: 100vh;
 }
-.left-view{
-    display: grid;
-    padding-left: 1rem;
-    grid-template-rows: 1fr 3fr;
-    background-color: rgb(255, 0, 0);
-}
-.right-view{
+
+
+.login-rightview{
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-rows: 2fr 6fr;
     background-color: #fff;
 }
+

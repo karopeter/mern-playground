@@ -3,6 +3,8 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
+  position: sticky;
+  top: 0;
   background-color: teal;
   font-family: "Montserrat", sans-serif;
 }

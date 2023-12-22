@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Header from "../../../navigation/header/header.component";
 import FormInput from "../../../components/form-input/form-input.component";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 import CustomButton from "../../../components/custom-button/custom-button";
 import { WalmartContext } from "../../../authentication/context/walmartContext";
 import ariseBackground from "../../../assets/images/walmart.jpg";
@@ -14,6 +15,7 @@ const Walmart = () => {
     { value: "Vanillacard", label: "Vanillacard" },
   ];
   const [selectedOptions, setSelectedOptions] = useState(null);
+  const navigate = useNavigate();
   const customStyles = {
     control: (provided) => ({
       ...provided,
@@ -73,6 +75,7 @@ const Walmart = () => {
     };
     try {
       await postData(requestBody);
+      navigate('/products');
      resetForm();
     } catch (error) {
       setError(error.message);

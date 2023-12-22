@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import Sidebar from '../../../navigation/sidebar/sidebar.component';
 import FormInput from '../../../components/form-input/form-input.component';
+import { Link } from 'react-router-dom';
 import CustomButton from '../../../components/custom-button/custom-button';
+import ReactPaginate from 'react-paginate';
 import { BASE_URL } from '../../../config';
 import './products-styles.css';
 import  axios  from 'axios';
@@ -9,6 +11,12 @@ import  axios  from 'axios';
 
 const Products = () => { 
  const [data, setData] = useState([]);
+ const [setCurrentPage] = useState(0); //Initial page
+ const [totalPages] = useState(0);
+
+ const handlePageClick = (selectedPage) => {
+  setCurrentPage(selectedPage.selected);
+ }
   useEffect(() => {
     // Fetch data from the API endpoint using Axios
     axios.get(`${BASE_URL}/walmart`)
@@ -20,6 +28,11 @@ const Products = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  const styles = {
+      display: 'flex',
+      justifyContent: 'flex-end'
+  }
   
     return (
       <>
@@ -48,7 +61,7 @@ const Products = () => {
                   required
                 />
               </div>
-              <div>
+              <Link to="/walmart">
                 <CustomButton
                   style={{
                     height: "30px",
@@ -60,7 +73,7 @@ const Products = () => {
                 >
                   Create a new Product
                 </CustomButton>
-              </div>
+              </Link>
             </div>
             <div id="tableDiv">
               <table className="table">
@@ -86,6 +99,20 @@ const Products = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            <div style={styles}>
+              <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={totalPages} // Total number of pages
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                activeClassName={"active"}
+              />
             </div>
           </div>
         </div>
