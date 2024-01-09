@@ -8,6 +8,7 @@ import FinanceIcon from '@mui/icons-material/MonetizationOn';
 import MerchantIcon from '@mui/icons-material/BarChart';
 import FoodIcon from '@mui/icons-material/Receipt';
 import LogoutIcon from '@mui/icons-material/Logout';
+import MovieIcon from '@mui/icons-material/Movie';
 import './sidebar-styles.css';
 
 
@@ -33,13 +34,13 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link className="wall-side" to="">
+              <Link className="wall-side" to="/products">
                 <PortalIcon
                   style={{
                     marginRight: "8px",
                   }}
                 />
-                <span className="nav-item">Portal</span>
+                <span className="nav-item">Products</span>
               </Link>
             </li>
             <li>
@@ -80,6 +81,16 @@ export default function Sidebar() {
                   }}
                 />
                 <span className="nav-item">Food & Supply</span>
+              </Link>
+            </li>
+            <li>
+              <Link className="wall-side" to="/movies">
+                <MovieIcon
+                  style={{
+                    marginRight: "8px",
+                  }}
+                />
+                <span className="nav-item">Movies</span>
               </Link>
             </li>
           </ul>

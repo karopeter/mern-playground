@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
       const [userInfo, setUserInfo] = useState({});
       const [isLoading, setIsLoading] = useState(false);
 
-      const register = async (firstName, lastName, email, password) => {
+      const register = async ({firstName, lastName, email, password}) => {
         setIsLoading(true);
         const requestOptions = {
             method: 'POST',
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
              method: 'POST', 
              headers: {'Content-Type': 'application/json'}
          }
-         console.log("email", email, "password", password);
+        //  console.log("email", email, "password", password);
          axios.post(`${BASE_URL}/user/login`, {
             email,
             password

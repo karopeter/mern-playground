@@ -11,14 +11,6 @@ const HomePage = () => {
        <div className="homepage">
          <Directory /> 
        </div>
-      {/* <div className="web-page p-0">
-         <div className="col-3 p-0">
-             <Sidebar />
-         </div>
-         <div className="right-view">
-
-         </div>
-       </div>  */}
       </>
     );
 }

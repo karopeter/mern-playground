@@ -42,11 +42,6 @@ const Header = () => {
                 Walmart
               </Link>
             </li>
-            <li className="nav-list">
-              <Link to="/" className="nav-active">
-                Logout
-              </Link>
-            </li>
           </ul>
         </nav>
       </>
