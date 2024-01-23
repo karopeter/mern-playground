@@ -32,7 +32,7 @@ const Products = () => {
   const styles = {
       display: 'flex',
       justifyContent: 'flex-end'
-  }
+  };
   
     return (
       <>
@@ -114,7 +114,6 @@ const Products = () => {
                 activeClassName={"active"}
               />
             </div>
-            
           </div>
         </div>
       </>

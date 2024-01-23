@@ -17,10 +17,17 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../config';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 
 const Movies = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [setCurrentPage] = useState(0);
+  const [totalPages] = useState(0);
+  
+  const handlePageClick = (selectedPage) => {
+    setCurrentPage(selectedPage.selected);
+  }
 
   const handleRowClick = (id) => {
     navigate('/movie-details');
@@ -35,6 +42,13 @@ const Movies = () => {
       console.error("Error fetching data:", error);
     });
   }, []);
+  
+  const styles = {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  };
+
+
     return (
       <>
         <PageSide>
@@ -88,20 +102,37 @@ const Movies = () => {
                 </PageTableHead>
                 <PageTableBody>
                   {data.map((item) => (
-                    <PageTableRow key={item._id} onClick={() => handleRowClick(item.id)}>
-                        <PageTableData>{item.fullName}</PageTableData>
-                        <PageTableData>{item.title}</PageTableData>
-                        <PageTableData>{item.genre}</PageTableData>
-                        <PageTableData>{item.booking}</PageTableData>
-                        <PageTableData>{item.status}</PageTableData>
-                        <PageTableData>
-                          {new Date(item.createdAt).toLocaleString()}
-                        </PageTableData>
+                    <PageTableRow
+                      key={item._id}
+                      onClick={() => handleRowClick(item.id)}
+                    >
+                      <PageTableData>{item.fullName}</PageTableData>
+                      <PageTableData>{item.title}</PageTableData>
+                      <PageTableData>{item.genre}</PageTableData>
+                      <PageTableData>{item.booking}</PageTableData>
+                      <PageTableData>{item.status}</PageTableData>
+                      <PageTableData>
+                        {new Date(item.createdAt).toLocaleString()}
+                      </PageTableData>
                     </PageTableRow>
                   ))}
                 </PageTableBody>
               </PageSetTable>
             </PageTable>
+
+            <div style={styles}>
+              <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={totalPages} // Total number of pages
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                activeClassName={"active"}
+              />
+            </div>
           </PageRight>
         </PageSide>
       </>
